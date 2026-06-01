@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIVEA | Skincare for Confidence</title>
+    <meta name="description" content="Discover NIVEA's premium skincare products for hydration, protection, and healthy skin. Experience trusted skincare with over 100 years of expertise.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'nivea-blue': '#003087',
+                        'nivea-light-blue': '#0054a6',
+                        'nivea-silver': '#e8e8e8',
+                        'nivea-cream': '#f9f7f2'
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0, 48, 135, 0.9) 0%, rgba(0, 84, 166, 0.8) 100%);
+        }
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        @media (max-width: 768px) {
+            .section-padding {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-nivea-blue rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">N</span>
+                    </div>
+                    <span class="text-2xl font-bold text-nivea-blue font-montserrat">NIVEA</span>
+                </div>
+                
+                <ul id="nav-list" class="hidden md:flex space-x-8"></ul>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="mobile-menu-btn" class="md:hidden text-nivea-blue">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <button class="bg-nivea-blue text-white px-6 py-2 rounded-full hover:bg-nivea-light-blue transition-colors font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden mt-4 hidden">
+                <ul id="mobile-nav-list" class="space-y-4"></ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <div class="hero-gradient absolute inset-0 z-0"></div>
+        <div class="relative z-10 container mx-auto px-4 py-20 md:py-32">
+            <div class="max-w-3xl mx-auto text-center text-white animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 font-playfair">Skincare for Confidence</h1>
+                <p class="text-xl md:text-2xl mb-10 opacity-90">Discover the perfect balance of science and care for your skin. Over 100 years of trusted skincare expertise.</p>
+                <button class="bg-white text-nivea-blue px-10 py-4 rounded-full text-lg font-semibold hover:bg-nivea-silver transition-all transform hover:scale-105 shadow-lg">
+                    Discover Products
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="products" class="section-padding bg-nivea-cream">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-nivea-blue mb-4 font-playfair">Featured Skincare</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Premium skincare solutions for every need, trusted by millions worldwide</p>
+            </div>
+            
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Skin Benefits Section -->
+    <section id="benefits" class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-nivea-blue mb-4 font-playfair">Skin Benefits</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Experience transformative skincare benefits with NIVEA's scientifically formulated products</p>
+            </div>
+            
+            <div id="benefits-grid" class="grid grid-cols-1 md:grid-cols-2 gap-12"></div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section id="story" class="section-padding bg-nivea-cream">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-nivea-blue mb-6 font-playfair">Our Story Since 1911</h2>
+                    <p class="text-gray-700 mb-6">For over a century, NIVEA has been at the forefront of skincare innovation, combining scientific research with a deep understanding of skin needs.</p>
+                    <p class="text-gray-700 mb-6">From the iconic blue tin to our modern formulations, we've maintained our commitment to quality, trust, and care for all skin types.</p>
+                    <p class="text-gray-700 mb-8">Today, NIVEA continues to innovate while staying true to our heritage of providing effective, accessible skincare for everyone.</p>
+                    <button class="bg-nivea-blue text-white px-8 py-3 rounded-full hover:bg-nivea-light-blue transition-colors font-medium">
+                        Learn More About Us
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/400/500?random=10" alt="Classic NIVEA cream products" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-lg mt-8">
+                        <img src="https://picsum.photos/400/500?random=11" alt="Modern NIVEA skincare routine" class="w-full h-64 object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-nivea-blue mb-4 font-playfair">Trusted by Millions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Real stories from people who transformed their skincare routine with NIVEA</p>
+            </div>
+            
+            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-nivea-blue text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                            <span class="text-nivea-blue font-bold text-lg">N</span>
+                        </div>
+                        <span class="text-2xl font-bold font-montserrat">NIVEA</span>
+                    </div>
+                    <p class="text-nivea-silver mb-6">Trusted skincare since 1911. Science, care, and innovation for healthy, beautiful skin.</p>
+                    <div id="social-icons" class="flex space-x-4"></div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Products</h3>
+                    <ul id="footer-products" class="space-y-3"></ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Company</h3>
+                    <ul id="footer-company" class="space-y-3"></ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Stay Updated</h3>
+                    <p class="text-nivea-silver mb-4">Subscribe for skincare tips and exclusive offers</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="flex-grow px-4 py-3 rounded-l-lg text-gray-800 focus:outline-none">
+                        <button class="bg-white text-nivea-blue px-6 py-3 rounded-r-lg font-medium hover:bg-nivea-silver transition-colors">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-nivea-light-blue mt-12 pt-8 text-center text-nivea-silver text-sm">
+                <p>&copy; 2024 NIVEA Skincare. All rights reserved. | <a href="#" class="hover:text-white transition-colors">Privacy Policy</a> | <a href="#" class="hover:text-white transition-colors">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Layer
+        const navigationItems = [
+            { "label": "Home", "href": "#home" },
+            { "label": "Products", "href": "#products" },
+            { "label": "Benefits", "href": "#benefits" },
+            { "label": "Our Story", "href": "#story" },
+            { "label": "Testimonials", "href": "#testimonials" }
+        ];
+
+        const products = [
+            { 
+                "id": 1,
+                "name": "NIVEA Body Lotion",
+                "description": "Deeply moisturizing lotion for 48h hydration with Q10 coenzyme",
+                "image": "https://picsum.photos/400/500?random=1",
+                "alt": "NIVEA Body Lotion bottle with blue packaging",
+                "category": "Body Care"
+            },
+            { 
+                "id": 2,
+                "name": "NIVEA Face Cream",
+                "description": "Anti-aging cream with hyaluronic acid for smoother, younger-looking skin",
+                "image": "https://picsum.photos/400/500?random=2",
+                "alt": "NIVEA Face Cream jar with silver lid",
+                "category": "Face Care"
+            },
+            { 
+                "id": 3,
+                "name": "NIVEA Sunscreen SPF 50",
+                "description": "Broad spectrum protection with non-greasy formula for daily use",
+                "image": "https://picsum.photos/400/500?random=3",
+                "alt": "NIVEA Sunscreen bottle with blue and white design",
+                "category": "Sun Protection"
+            },
+            { 
+                "id": 4,
+                "name": "NIVEA Lip Care",
+                "description": "Soothing lip balm with natural shea butter and SPF 15 protection",
+                "image": "https://picsum.photos/400/500?random=4",
+                "alt": "NIVEA Lip Balm stick with blue packaging",
+                "category": "Lip Care"
+            },
+            { 
+                "id": 5,
+                "name": "NIVEA Men Sensitive",
+                "description": "Alcohol-free shaving gel for sensitive skin with chamomile extract",
+                "image": "https://picsum.photos/400/500?random=5",
+                "alt": "NIVEA Men Sensitive shaving gel",
+                "category": "Men's Care"
+            },
+            { 
+                "id": 6,
+                "name": "NIVEA Creme",
+                "description": "The original multi-purpose cream for face, body, and hands",
+                "image": "https://picsum.photos/400/500?random=6",
+                "alt": "Classic NIVEA blue tin cream",
+                "category": "Classic"
+            }
+        ];
+
+        const benefits = [
+            {
+                "title": "Deep Hydration",
+                "description": "Our formulas provide long-lasting moisture that penetrates deep into skin layers, keeping your skin supple and hydrated throughout the day.",
+                "image": "https://picsum.photos/400/300?random=7",
+                "alt": "Hydrated glowing skin close-up",
+                "icon": "fas fa-tint"
+            },
+            {
+                "title": "Skin Protection",
+                "description": "Advanced UV protection and environmental shield formulas defend your skin against daily stressors and premature aging.",
+                "image": "https://picsum.photos/400/300?random=8",
+                "alt": "Sun protection application",
+                "icon": "fas fa-shield-alt"
+            },
+            {
+                "title": "Smooth Texture",
+                "description": "Specially developed ingredients work to improve skin texture, leaving it feeling incredibly soft, smooth, and revitalized.",
+                "image": "https://picsum.photos/400/300?random=9",
+                "alt": "Smooth skin texture detail",
+                "icon": "fas fa-spa"
+            },
+            {
+                "title": "Healthy Glow",
+                "description": "Nourishing formulas enriched with vitamins and natural extracts promote a natural, healthy radiance from within.",
+                "image": "https://picsum.photos/400/300?random=12",
+                "alt": "Healthy glowing complexion",
+                "icon": "fas fa-sun"
+            }
+        ];
+
+        const testimonials = [
+            {
+                "name": "Sarah M.",
+                "role": "Beauty Blogger",
+                "comment": "NIVEA's face cream transformed my skincare routine. My skin has never felt this hydrated and smooth!",
+                "image": "https://picsum.photos/100/100?random=13",
+                "alt": "Sarah profile photo",
+                "rating": 5
+            },
+            {
+                "name": "James T.",
+                "role": "Daily User",
+                "comment": "As someone with sensitive skin, NIVEA Men products are the only ones that don't cause irritation. Highly recommended!",
+                "image": "https://picsum.photos/100/100?random=14",
+                "alt": "James profile photo",
+                "rating": 5
+            },
+            {
+                "name": "Emma R.",
+                "role": "Dermatologist",
+                "comment": "I recommend NIVEA to my patients for its effective formulations and commitment to skin health research.",
+                "image": "https://picsum.photos/100/100?random=15",
+                "alt": "Emma profile photo",
+                "rating": 5
+            }
+        ];
+
+        const socialLinks = [
+            { "icon": "fab fa-facebook-f", "href": "#", "label": "Facebook" },
+            { "icon": "fab fa-instagram", "href": "#", "label": "Instagram" },
+            { "icon": "fab fa-twitter", "href": "#", "label": "Twitter" },
+            { "icon": "fab fa-youtube", "href": "#", "label": "YouTube" },
+            { "icon": "fab fa-pinterest", "href": "#", "label": "Pinterest" }
+        ];
+
+        const footerProducts = [
+            { "label": "Body Care", "href": "#" },
+            { "label": "Face Care", "href": "#" },
+            { "label": "Men's Care", "href": "#" },
+            { "label": "Sun Protection", "href": "#" },
+            { "label": "Lip Care", "href": "#" }
+        ];
+
+        const footerCompany = [
+            { "label": "About Us", "href": "#" },
+            { "label": "Sustainability", "href": "#" },
+            { "label": "Careers", "href": "#" },
+            { "label": "Press", "href": "#" },
+            { "label": "Contact", "href": "#" }
+        ];
+
+        // Render Functions
+        function renderNavigation(items) {
+            return items.map(item => 
+                `<li><a href="${item.href}" class="text-gray-700 hover:text-nivea-blue font-medium transition-colors">${item.label}</a></li>`
+            ).join("");
+        }
+
+        function renderProducts(items) {
+            return items.map(product => `
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="${product.image}" alt="${product.alt}" class="product-image w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-nivea-blue text-white px-3 py-1 rounded-full text-xs font-medium">
+                            ${product.category}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">${product.name}</h3>
+                        <p class="text-gray-600 mb-4">${product.description}</p>
+                        <div class="flex justify-between items-center">
+                            <button class="bg-nivea-blue text-white px-6 py-2 rounded-full hover:bg-nivea-light-blue transition-colors font-medium">
+                                Buy Now
+                            </button>
+                            <button class="text-nivea-blue hover:text-nivea-light-blue font-medium">
+                                Learn More →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function renderBenefits(items) {
+            return items.map(benefit => `
+                <div class="flex flex-col md:flex-row items-center gap-6 animate-slide-up">
+                    <div class="md:w-1/3">
+                        <div class="rounded-2xl overflow-hidden shadow-lg">
+                            <img src="${benefit.image}" alt="${benefit.alt}" class="w-full h-48 object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-nivea-blue rounded-full flex items-center justify-center mr-4">
+                                <i class="${benefit.icon} text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">${benefit.title}</h3>
+                        </div>
+                        <p class="text-gray-600">${benefit.description}</p>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function renderTestimonials(items) {
+            return items.map(testimonial => `
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-nivea-silver">
+                    <div class="flex items-center mb-6">
+                        <img src="${testimonial.image}" alt="${testimonial.alt}" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">${testimonial.name}</h4>
+                            <p class="text-gray-600 text-sm">${testimonial.role}</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        ${Array(testimonial.rating).fill('<i class="fas fa-star text-yellow-400"></i>').join('')}
+                    </div>
+                    <p class="text-gray-700 italic">"${testimonial.comment}"</p>
+                </div>
+            `).join("");
+        }
+
+        function renderSocialIcons(items) {
+            return items.map(item => 
+                `<a href="${item.href}" aria-label="${item.label}" class="w-10 h-10 bg-white text-nivea-blue rounded-full flex items-center justify-center hover:bg-nivea-silver transition-colors">
+                    <i class="${item.icon}"></i>
+                </a>`
+            ).join("");
+        }
+
+        function renderFooterLinks(items) {
+            return items.map(item => 
+                `<li><a href="${item.href}" class="text-nivea-silver hover:text-white transition-colors">${item.label}</a></li>`
+            ).join("");
+        }
+
+        // Initialize Page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render navigation
+            document.getElementById('nav-list').innerHTML = renderNavigation(navigationItems);
+            document.getElementById('mobile-nav-list').innerHTML = renderNavigation(navigationItems);
+            
+            // Render products
+            document.getElementById('products-grid').innerHTML = renderProducts(products);
+            
+            // Render benefits
+            document.getElementById('benefits-grid').innerHTML = renderBenefits(benefits);
+            
+            // Render testimonials
+            document.getElementById('testimonials-grid').innerHTML = renderTestimonials(testimonials);
+            
+            // Render footer
+            document.getElementById('social-icons').innerHTML = renderSocialIcons(socialLinks);
+            document.getElementById('footer-products').innerHTML = renderFooterLinks(footerProducts);
+            document.getElementById('footer-company').innerHTML = renderFooterLinks(footerCompany);
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Smooth scrolling for navigation links
+            document.addEventListener('click', function(event) {
+                const link = event.target.closest('a[href^="#"]');
+                if (!link) return;
+                
+                const targetId = link.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    event.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+            
+            // Add scroll animation
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe sections for animation
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
